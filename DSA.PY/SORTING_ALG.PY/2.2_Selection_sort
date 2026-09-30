@@ -1,0 +1,166 @@
+'''
+SELECTION_SORT
+
+IT WORK ON MINIMUM OR LIMITED DATA
+TO REDUCE COMPARISION
+HERE WE NEED TO CONSIDER 1 ASSUMED POSITION (ALWAYS 0TH POSITION) 
+                  ||
+ THROUGH THESE ASSUMED POSITION OTHER ELEMENTS GETTING SORT 
+
+ x=[3,7,10,1,2]
+
+internally
+
+   0 1  2 3  4
+x=[3,7,10,1, 2]
+
+ASS POS (MIN POS) = 0TH POSITION 
+
+0TH ----> X[0]= 3
+        X[0]>X[1]   ----------> 3 > 7   -l----> FALSE
+        X[0]>X[2]   ----------> 3 > 10  -----> FALSE
+        X[0]>X[3]   ----------> 3 > 1   -----> TRUE ----------> HERE WE NEED TO CHANGE THE ASSUMED POSITION VALUE
+        NOW ASSUMED POS =3
+        X[3]>X[4]   ----------> 1 > 2  -----> FALSE 
+        SWAP
+        X[0],X[3]=X[3],X[0]
+
+        3   7   10   1   2
+
+        1   7   10   3   2 ----------> UPDATED --------> X[0] --> SORT --> MOVING TO NEXT CELL OR ASSUMED POSITION 
+INDEX   0   1   2    3   4
+NEXT 
+ 
+----------> X[1]= ASSUMED POS
+            X[1]>X[2] -----------> 7 > 10 -------> FALSE
+            X[1]>X[3] -----------> 7 > 3  -------> TRUE 
+
+----------->X[3]=ASSUMED POS
+            X[3]>X[4] -----------> 3 > 2  -------> TRUE
+
+-----------> ASSUMED POS (MIN P) = 4
+            X[1] , X[4] = X[4], X[1]     ---------> SWAP THE POSITION
+
+UPDATED LIST ---> 1   2   10   3   7
+
+
+
+
+        
+Y=[100, 2, 20, 35, 40, 9 , 18]     
+'''
+
+x=[100, 2, 20, 35, 40, 9, 18] 
+minp=0
+
+print(x[minp])       #---> 100 ----> x[0] ---> assumed pos
+
+
+# ----------------------------------------------------
+print()
+
+x=[100, 2, 20, 35, 40, 9, 18] 
+minp=0
+
+for i in range(1,len(x)):
+    if x[minp]>x[i]:           #--> TRUE--> x[i]-----> position start from index 1  x[1] / x[i] --> 2 & x[minp]=0 ---> 100> 20 --> TRUE --> UPDATE MINP IS 1
+        minp=i                 #---> minp=i ---------> 1 = 1
+
+x[0], x[minp] = x[minp], x[0]  #----> x[0]--> 100 & x[minp]--> 2 ----> swap
+
+print("FIRST PASS DATA--->", x)                       #---->[2, 100, 20, 35, 40, 9, 18]
+
+print()
+
+# SECOND SWAP
+
+minp=1
+
+for i in range(2,len(x)):
+    if x[minp]>x[i]:          
+        minp=i                
+
+x[1], x[minp] = x[minp], x[1]  
+
+print("SECOND PASS DATA---->", x)      #-------> SECOND PASS DATA----> [2, 9, 20, 35, 40, 100, 18]
+
+print()
+
+minp=2
+
+for i in range(3,len(x)):
+    if x[minp]>x[i]:           
+        minp=i                 
+
+x[2], x[minp] = x[minp], x[2]  
+
+print("THIRD PASS DATA--->", x)       #-> THIRD PASS DATA---> [2, 9, 18, 35, 40, 100, 20]
+
+print() 
+
+minp=3
+
+for i in range(4,len(x)):
+    if x[minp]>x[i]:           
+        minp=i                 
+
+x[3], x[minp] = x[minp], x[3]  
+
+print("FORTH PASS DATA--->", x)        #-------> FORTH PASS DATA---> [2, 9, 18, 20, 40, 100, 35]
+
+print()
+
+minp=4
+
+for i in range(5,len(x)):
+    if x[minp]>x[i]:           
+        minp=i                 
+
+x[4], x[minp] = x[minp], x[4]  
+
+print("FIFTH PASS DATA--->", x)        #--------> FIFTH PASS DATA---> [2, 9, 18, 20, 35, 100, 40]
+
+print()
+
+minp=5
+
+for i in range(6,len(x)):
+    if x[minp]>x[i]:           
+        minp=i                 
+
+x[5], x[minp] = x[minp], x[5]  
+
+print("SIX PASS DATA--->", x)       #------> SIX PASS DATA---> [2, 9, 18, 20, 35, 40, 100]
+
+
+# FIRST PASS DATA--->    [2, 100, 20, 35, 40, 9, 18]
+
+# SECOND PASS DATA---->  [2, 9, 20, 35, 40, 100, 18]
+
+# THIRD PASS DATA--->    [2, 9, 18, 35, 40, 100, 20]
+
+# FORTH PASS DATA--->    [2, 9, 18, 20, 40, 100, 35]
+
+# FIFTH PASS DATA--->    [2, 9, 18, 20, 35, 100, 40]
+
+# SIX PASS DATA--->      [2, 9, 18, 20, 35, 40, 100]
+
+print()
+# ---------------------------------------------------------------------------------------
+
+# NESTED 
+
+#   0     1     2    3    4  5   6
+s=[1000, 250, 15000, 50, 33, 2, 0.5]
+
+
+for i in range(len(s)): 
+    minp=i
+    for j in range(1+i, len(s)):
+        if s[j] < s[minp]:
+            minp=j
+    s[i], s[minp] = s[minp], s[i]
+
+print(s)                             #------------> [0.5, 2, 33, 50, 250, 1000, 15000]
+
+

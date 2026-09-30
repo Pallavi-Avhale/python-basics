@@ -1,0 +1,24 @@
+''' 
+MODULE
+|
+PANDAS
+|
+MATPLOTLIB
+|
+SKLEARN
+|
+LEAR REGRESSION
+|
+MATRIXES
+
+
+MAE
+|
+MSE
+|
+RMSE
+|
+R2
+
+
+'''
